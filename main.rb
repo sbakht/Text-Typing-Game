@@ -11,6 +11,7 @@ def mistakes(original, inputted)
 end
 
 totalTime = 0
+totalWordsCorrect = 0
 totalWordCount = 0
 totalCharCount = 0
 File.open(ARGV[0]).each_line do |line|
@@ -25,6 +26,7 @@ File.open(ARGV[0]).each_line do |line|
 
 		wordCount = sentence.count(' ') + 1
 		totalWordCount += wordCount
+		totalWordsCorrect += correctWordCount
 		puts "Words Correct: #{correctWordCount}/#{wordCount} words"
 		puts "Words Correct: #{percentWordsCorrect}%"
 
@@ -46,6 +48,6 @@ File.open(ARGV[0]).each_line do |line|
 		puts "\n"
 	end
 end
-puts "Total Word Count: #{totalWordCount}"
+puts "Total Words Correct: #{totalWordsCorrect}/#{totalWordCount}"
 puts "Total Character Count: #{totalCharCount}"
 puts "Total Time: #{totalTime.round(2)}"
