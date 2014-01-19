@@ -1,0 +1,3 @@
+first line
+this string is a bit longer
+wow 3 lines long
