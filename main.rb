@@ -14,6 +14,12 @@ totalTime = 0
 totalWordsCorrect = 0
 totalWordCount = 0
 totalCharCount = 0
+
+points = 0
+File.new('scores.txt','r').each_line do |line|
+	points = line.to_i
+end
+
 File.open(ARGV[0]).each_line do |line|
 	line = line.strip.gsub(/[.?!]/, '\0|').split('|')
 	line.each do |sentence|
@@ -59,6 +65,11 @@ File.open(ARGV[0]).each_line do |line|
 		puts "\n"
 	end
 end
+
+points += totalWordsCorrect
+File.new('scores.txt','w') << points
+
 puts "Total Words Correct: #{totalWordsCorrect}/#{totalWordCount}"
 puts "Total Character Count: #{totalCharCount}"
 puts "Total Time: #{totalTime.round(2)}"
+puts "Total Points: #{points}"
