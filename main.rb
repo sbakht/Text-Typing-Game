@@ -1,3 +1,12 @@
+
+def mistakes(original, inputted)
+	original = original.split
+	inputted = inputted.split
+	original.each_with_index do |word,i|
+		puts word if word == inputted[i]
+	end
+end
+
 totalTime = 0
 totalWordCount = 0
 totalCharCount = 0
@@ -8,6 +17,7 @@ File.open(ARGV[0]).each_line do |line|
 		puts sentence
 		t1 = Time.now
 		input = STDIN.gets.chomp
+		mistakes(sentence, input)
 		t2 = Time.now
 
 		wordCount = sentence.count(' ') + 1
