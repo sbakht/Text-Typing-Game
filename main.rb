@@ -2,9 +2,12 @@
 def mistakes(original, inputted)
 	original = original.split
 	inputted = inputted.split
+	wrongWordCount = 0
 	original.each_with_index do |word,i|
-		puts word if word == inputted[i]
+		wrongWordCount += 1 if word == inputted[i]
 	end
+	percentWordsCorrect = (wrongWordCount/original.length.to_f*100.0).round()
+	puts "Words Correct: #{percentWordsCorrect}%"
 end
 
 totalTime = 0
@@ -34,6 +37,8 @@ File.open(ARGV[0]).each_line do |line|
 
 		if input == sentence
 			puts "CORRECT"
+		elsif input.split == sentence.split
+			puts "CORRECT WITH EXTRA SPACE"
 		else
 			puts "WRONG"
 		end
