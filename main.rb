@@ -56,6 +56,8 @@ File.open(ARGV[0]).each_line do |line|
 			puts "CORRECT WITH MISSING SPACE"
 			output.puts(sentence)
 			output.puts(input)
+		elsif input == ""
+			puts "NO ATTEMPT"
 		else
 			puts "WRONG"
 			output.puts(sentence)
