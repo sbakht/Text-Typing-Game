@@ -42,6 +42,8 @@ File.open(ARGV[0]).each_line do |line|
 			puts "CORRECT"
 		elsif input.split == sentence.split
 			puts "CORRECT WITH EXTRA SPACE"
+		elsif input.gsub(/\s+/,'') == sentence.gsub(/\s+/,'')
+			puts "CORRECT WITH MISSING SPACE"
 		else
 			puts "WRONG"
 		end
