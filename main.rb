@@ -38,20 +38,24 @@ File.open(ARGV[0]).each_line do |line|
 		totalTime += timeTaken
 		puts "Time Taken: #{timeTaken.round(2)}"
 
-		output = File.new('output.txt','a')
-		output.puts(sentence)
-		output.puts(input)
-		output.close
+		output = File.new('output.txt','a')		
 
 		if input == sentence
 			puts "CORRECT"
 		elsif input.split == sentence.split
 			puts "CORRECT WITH EXTRA SPACE"
+			output.puts(sentence)
+			output.puts(input)
 		elsif input.gsub(/\s+/,'') == sentence.gsub(/\s+/,'')
 			puts "CORRECT WITH MISSING SPACE"
+			output.puts(sentence)
+			output.puts(input)
 		else
 			puts "WRONG"
+			output.puts(sentence)
+			output.puts(input)
 		end
+		output.close
 		puts "\n"
 	end
 end
