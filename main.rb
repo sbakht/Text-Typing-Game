@@ -38,6 +38,11 @@ File.open(ARGV[0]).each_line do |line|
 		totalTime += timeTaken
 		puts "Time Taken: #{timeTaken.round(2)}"
 
+		output = File.new('output.txt','a')
+		output.puts(sentence)
+		output.puts(input)
+		output.close
+
 		if input == sentence
 			puts "CORRECT"
 		elsif input.split == sentence.split
