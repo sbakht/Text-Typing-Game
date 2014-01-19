@@ -2,12 +2,12 @@
 def mistakes(original, inputted)
 	original = original.split
 	inputted = inputted.split
-	wrongWordCount = 0
+	correctWordCount = 0
 	original.each_with_index do |word,i|
-		wrongWordCount += 1 if word == inputted[i]
+		correctWordCount += 1 if word == inputted[i]
 	end
-	percentWordsCorrect = (wrongWordCount/original.length.to_f*100.0).round()
-	puts "Words Correct: #{percentWordsCorrect}%"
+	percentWordsCorrect = (correctWordCount/original.length.to_f*100.0).round()
+	return correctWordCount, percentWordsCorrect
 end
 
 totalTime = 0
@@ -20,12 +20,13 @@ File.open(ARGV[0]).each_line do |line|
 		puts sentence
 		t1 = Time.now
 		input = STDIN.gets.chomp
-		mistakes(sentence, input)
+		correctWordCount, percentWordsCorrect = mistakes(sentence, input)
 		t2 = Time.now
 
 		wordCount = sentence.count(' ') + 1
 		totalWordCount += wordCount
-		puts "Word Count: #{wordCount}"
+		puts "Words Correct: #{correctWordCount}/#{wordCount} words"
+		puts "Words Correct: #{percentWordsCorrect}%"
 
 		charCount = sentence.length
 		totalCharCount += charCount
